@@ -18,3 +18,23 @@ C:\Users\KE\Documents\Visual Studio 2015\Projects\MyGameList\WuZiqi\obj\Debug\Wu
 C:\Users\KE\Documents\Visual Studio 2015\Projects\MyGameList\WuZiqi\obj\Debug\WuZiqi.csprojResolveAssemblyReference.cache
 C:\Users\KE\Documents\Visual Studio 2015\Projects\MyGameList\WuZiqi\bin\Fleck.dll
 C:\Users\KE\Documents\Visual Studio 2015\Projects\MyGameList\WuZiqi\bin\fastjson.dll
+D:\git_project\mygame\WuZiqi\bin\roslyn\csc.exe
+D:\git_project\mygame\WuZiqi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\git_project\mygame\WuZiqi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\git_project\mygame\WuZiqi\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\git_project\mygame\WuZiqi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\git_project\mygame\WuZiqi\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\git_project\mygame\WuZiqi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\git_project\mygame\WuZiqi\bin\roslyn\System.Collections.Immutable.dll
+D:\git_project\mygame\WuZiqi\bin\roslyn\System.Reflection.Metadata.dll
+D:\git_project\mygame\WuZiqi\bin\roslyn\vbc.exe
+D:\git_project\mygame\WuZiqi\bin\roslyn\VBCSCompiler.exe
+D:\git_project\mygame\WuZiqi\bin\roslyn\VBCSCompiler.exe.config
+D:\git_project\mygame\WuZiqi\bin\WuZiqi.dll.config
+D:\git_project\mygame\WuZiqi\bin\WuZiqi.dll
+D:\git_project\mygame\WuZiqi\bin\WuZiqi.pdb
+D:\git_project\mygame\WuZiqi\bin\fastjson.dll
+D:\git_project\mygame\WuZiqi\bin\Fleck.dll
+D:\git_project\mygame\WuZiqi\obj\Debug\WuZiqi.csprojResolveAssemblyReference.cache
+D:\git_project\mygame\WuZiqi\obj\Debug\WuZiqi.dll
+D:\git_project\mygame\WuZiqi\obj\Debug\WuZiqi.pdb
