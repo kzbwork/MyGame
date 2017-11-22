@@ -1,5 +1,8 @@
 ﻿var login_ok = false;
 var chessArray = new Array();
+
+var type = null;
+var gamestart = false;
 var start = function () {
     var wsImpl = window.WebSocket || window.MozWebSocket;
     window.ws = new wsImpl('ws://192.168.157.166:7181/');
@@ -41,16 +44,57 @@ var start = function () {
 }
 
 $(function () {
-    login();
+    //login();
+    //loadqipan();
+    //$.ajax({
+    //    type: "POST",
+    //    datatype: "json",
+    //    url: "http://" + document.domain + ":12606/handler/WuziHnadler.ashx?action=join",
+    //    success: function (d) {
+    //        //start();
+    //        alert(d.status);
+    //    }
+    //});
 });
 
 function login() {
     $.ajax({
         type: "POST",
         datatype: "json",
-        url: "http://" + document.domain + ":12606/IndexHandler.ashx?action=join",
-        success: function (d) {
-            start();
+        url: "http://" + document.domain + ":12606/handler/WuziHnadler.ashx?action=join",
+        success: function (data) {
+            data = eval('(' + data + ')');
+            if (data.status == "ok")
+            {
+                var state = data.msg.type;
+                if (state == "frist")
+                {
+                    var ip = data.msg.ip;
+                    var winnum = data.msg.winnum;
+                    var lesstime = data.msg.lesstime;
+                    var choose = data.msg.choose;
+                    $("#player1").html(ip);
+                    $("#player1_time").html(lesstime);
+                    $("#player1_win").html(winnum);
+                    type = choose;
+                    $("#join1").hide();
+                    loadqipan();
+                }
+
+                if (state == "second") {
+                    var ip = data.msg.ip;
+                    var winnum = data.msg.winnum;
+                    var lesstime = data.msg.lesstime;
+                    var choose = data.msg.choose;
+                    $("#player2").html(ip);
+                    $("#player2_time").html(lesstime);
+                    $("#player2_win").html(winnum);
+                    type = choose;
+                    $("#join2").hide();
+                    loadqipan();
+                }
+                start();
+            }
         }
     });
 }
@@ -62,34 +106,34 @@ function loadqipan() {
     for (var i = 0 ; i < 15 ; i++) {
         for (var j = 0; j < 15; j++) {
             if (i == 0 && j == 0) {
-                img = 'source/qi_part_left_top.png';//左上角
+                img = '../source/qi_part_left_top.png';//左上角
             }
             else if (i > 0 && i < 14 && j == 0) {
-                img = 'source/qi_part_top_bian.png';//上边
+                img = '../source/qi_part_top_bian.png';//上边
             }
             else if (i == 14 && j == 0) {
-                img = 'source/qi_part_right_top.png';//右上角
+                img = '../source/qi_part_right_top.png';//右上角
             }
             else if (i == 0 && j > 0 && j < 14) {
-                img = 'source/qi_part_left_bian.png';//左边
+                img = '../source/qi_part_left_bian.png';//左边
             }
             else if (i == 0 && j == 14) {
-                img = 'source/qi_part_left_bot.png';//左下角
+                img = '../source/qi_part_left_bot.png';//左下角
             }
             else if (j == 14 && i > 0 && i < 14) {
-                img = 'source/qi_part_bot_bian.png';//下边
+                img = '../source/qi_part_bot_bian.png';//下边
             }
             else if (i == 14 && j == 14) {
-                img = 'source/qi_part_right_bot.png';//右下角
+                img = '../source/qi_part_right_bot.png';//右下角
             }
             else if (i == 14 && j > 0 && j < 14) {
-                img = 'source/qi_part_right_bian.png';//右边
+                img = '../source/qi_part_right_bian.png';//右边
             }
             else if ((i == 3 && j == 3) || (i == 7 && j == 3) || (i == 11 && j == 3) || (i == 3 && j == 7) || (i == 7 && j == 7) || (i == 11 && j == 7) || (i == 3 && j == 11) || (i == 7 && j == 11) || (i == 11 && j == 11)) {
-                img = 'source/qi_part_dian.png';//特殊点
+                img = '../source/qi_part_dian.png';//特殊点
             }
             else {
-                img = 'source/qi_part.png';//普通点
+                img = '../source/qi_part.png';//普通点
             }
             $('<div style="position: absolute; left: ' + 40 * i + 'px; top: ' + 40 * j + 'px; background-image: url(\'' + img + '\');z-index:2;width:40px;height:40px;" onclick="dian(' + 40 * i + ',' + 40 * j + ')"></div>').appendTo($("#qipan"));
         }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace common.common
 {
-    class BaseFleck
+    public class BaseFleck
     {
-        private static bool IsCreateServer = false;
+        public static bool IsCreateServer = false;
         /// <summary>
         /// 构造函数
         /// </summary>

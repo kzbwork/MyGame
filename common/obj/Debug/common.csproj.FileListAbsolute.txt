@@ -1,6 +1,6 @@
-D:\git_project\mygame\common\obj\Debug\common.csprojResolveAssemblyReference.cache
 D:\git_project\mygame\common\bin\Debug\common.dll
 D:\git_project\mygame\common\bin\Debug\common.pdb
 D:\git_project\mygame\common\bin\Debug\fastjson.dll
 D:\git_project\mygame\common\obj\Debug\common.dll
 D:\git_project\mygame\common\obj\Debug\common.pdb
+D:\git_project\mygame\common\bin\Debug\Fleck.dll

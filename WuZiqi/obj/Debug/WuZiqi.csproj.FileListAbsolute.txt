@@ -38,3 +38,5 @@ D:\git_project\mygame\WuZiqi\bin\Fleck.dll
 D:\git_project\mygame\WuZiqi\obj\Debug\WuZiqi.csprojResolveAssemblyReference.cache
 D:\git_project\mygame\WuZiqi\obj\Debug\WuZiqi.dll
 D:\git_project\mygame\WuZiqi\obj\Debug\WuZiqi.pdb
+D:\git_project\mygame\WuZiqi\bin\common.dll
+D:\git_project\mygame\WuZiqi\bin\common.pdb

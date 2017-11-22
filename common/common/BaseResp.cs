@@ -1,4 +1,6 @@
-﻿using System;
+﻿using common.cs;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO.Compression;
 using System.Text;
@@ -10,6 +12,15 @@ namespace common.common
 {
     public abstract class BaseResp : IHttpAsyncHandler, IAsyncResult, IRequiresSessionState
     {
+        /// <summary>
+        /// 存储当前的用户
+        /// </summary>
+        protected static readonly ConcurrentDictionary<String, User> mUserList = new ConcurrentDictionary<String, User>();
+
+        /// <summary>
+        /// 存储当前的数组
+        /// </summary>
+        protected readonly static int [,] mChsesBag = new int[15, 15];
         /// <summary>
         /// 会话是否已经完成
         /// </summary>
@@ -63,6 +74,16 @@ namespace common.common
         /// <param name="msg"></param>
         protected virtual void Notify(String msg) { }
 
+        protected void ResetChese()
+        {
+            for (int i = 0; i < 15; i++)
+            {
+                for (int j = 0; j < 15; j++)
+                {
+                    mChsesBag[i, j] = 0;
+                }
+            }
+        }
 
         /// <summary>
         /// 设定返回消息类型
