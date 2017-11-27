@@ -20,86 +20,194 @@ namespace common.common
         public static bool CheckWuZi(int[,] chese, int LastX, int lastY, int type)
         {
             //横向
-            if ((chese[LastX,lastY] + chese[LastX + 1,lastY] + chese[LastX + 2,lastY] + chese[LastX + 3,lastY] + chese[LastX + 4,lastY]) / type == 5)
+            if ((LastX + 4 <= 14) && 
+                (chese[LastX,lastY] == chese[LastX + 1,lastY]) &&
+                (chese[LastX, lastY] == chese[LastX + 2, lastY]) &&
+                (chese[LastX, lastY] == chese[LastX + 3,lastY]) && 
+                (chese[LastX, lastY] == chese[LastX + 4,lastY]))
             {
                 return true;
             }
-            if ((chese[LastX - 1,lastY] + chese[LastX,lastY] + chese[LastX + 1,lastY] + chese[LastX + 2,lastY] + chese[LastX + 3,lastY]) / type == 5)
+            if ((LastX + 3 <= 14) && 
+                (LastX - 1 >= 0) && 
+                (chese[LastX - 1,lastY] == chese[LastX,lastY]) &&
+                (chese[LastX, lastY] == chese[LastX + 1, lastY]) &&
+                (chese[LastX, lastY] == chese[LastX + 2,lastY]) &&
+                (chese[LastX + 3,lastY]) == chese[LastX, lastY])
             {
                 return true;
             }
-            if ((chese[LastX - 2,lastY] + chese[LastX - 1,lastY] + chese[LastX,lastY] + chese[LastX + 1,lastY] + chese[LastX + 2,lastY]) / type == 5)
+            if ((LastX + 2 <= 14) && 
+                (LastX - 2 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX - 1, lastY]) &&
+                (chese[LastX - 2,lastY] == chese[LastX, lastY]) &&
+                (chese[LastX,lastY] == chese[LastX + 1,lastY]) &&
+                (chese[LastX + 2,lastY] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX - 3,lastY] + chese[LastX - 2,lastY] + chese[LastX,lastY -1 ] + chese[LastX,lastY] + chese[LastX + 1,lastY]) / type == 5)
+            if ((LastX + 1 <= 14) && 
+                (LastX - 3 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX - 2, lastY]) &&
+                (chese[LastX - 3,lastY] == chese[LastX, lastY]) &&
+                (chese[LastX,lastY -1 ] == chese[LastX,lastY]) &&
+                (chese[LastX + 1,lastY] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX - 4,lastY] + chese[LastX - 3,lastY] + chese[LastX - 2,lastY] + chese[LastX - 1,lastY] + chese[LastX,lastY]) / type == 5)
+            if ((LastX - 4 >= 0) &&
+                (chese[LastX, lastY] == chese[LastX - 4, lastY]) &&
+                (chese[LastX, lastY] == chese[LastX - 3,lastY]) &&
+                (chese[LastX - 2,lastY] == chese[LastX, lastY]) &&
+                (chese[LastX,lastY] == chese[LastX - 1, lastY]))
             {
                 return true;
             }
             //纵向
-            if ((chese[LastX,lastY] + chese[LastX,lastY + 1] + chese[LastX,lastY + 2] + chese[LastX,lastY + 3] + chese[LastX,lastY + 4]) / type == 5)
+            if ((lastY + 4 <= 14) &&
+                (chese[LastX,lastY] == chese[LastX,lastY + 1]) &&
+                (chese[LastX, lastY] == chese[LastX, lastY + 2]) &&
+                (chese[LastX, lastY] == chese[LastX,lastY + 3]) &&
+                (chese[LastX,lastY + 4] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX,lastY - 1] + chese[LastX,lastY] + chese[LastX,lastY + 1] + chese[LastX,lastY + 2] + chese[LastX,lastY + 3]) / type == 5)
+            if ((lastY + 3 <= 14) && 
+                (lastY - 1 >= 0) && 
+                (chese[LastX,lastY - 1] == chese[LastX,lastY]) &&
+                (chese[LastX, lastY] == chese[LastX, lastY + 1])&&
+                (chese[LastX, lastY] == chese[LastX,lastY + 2]) &&
+                (chese[LastX,lastY + 3] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX,lastY - 2] + chese[LastX,lastY - 1] + chese[LastX,lastY] + chese[LastX,lastY + 1] + chese[LastX,lastY + 2]) / type == 5)
+            if ((lastY + 2 <= 14) && 
+                (lastY - 2 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX, lastY - 2]) &&
+                (chese[LastX, lastY] == chese[LastX,lastY - 1]) &&
+                (chese[LastX,lastY] == chese[LastX,lastY + 1]) &&
+                (chese[LastX,lastY + 2] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX,lastY - 3] + chese[LastX,lastY - 2] + chese[LastX,lastY - 1] + chese[LastX,lastY] + chese[LastX,lastY + 1]) / type == 5)
+            if ((lastY + 1 <= 14) && 
+                (lastY - 3 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX, lastY - 3])&&
+                (chese[LastX, lastY] == chese[LastX,lastY - 2]) &&
+                (chese[LastX,lastY - 1] == chese[LastX,lastY]) &&
+                (chese[LastX,lastY + 1] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX,lastY - 4] + chese[LastX,lastY - 3] + chese[LastX,lastY - 2] + chese[LastX,lastY - 1] + chese[LastX,lastY]) / type == 5)
+            if ((lastY - 4 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX, lastY - 4]) &&
+                (chese[LastX, lastY] == chese[LastX,lastY - 3]) &&
+                (chese[LastX,lastY - 2] == chese[LastX, lastY]) &&
+                (chese[LastX,lastY] == chese[LastX, lastY - 1]))
             {
                 return true;
             }
             //斜向左到右
-            if ((chese[LastX,lastY] + chese[LastX + 1,lastY + 1] + chese[LastX + 2,lastY + 2] + chese[LastX + 3,lastY + 3] + chese[LastX + 4,lastY + 4]) / type == 5)
+            if ((LastX + 4 <= 14) && 
+                (lastY + 4 <= 14) && 
+                (chese[LastX,lastY] == chese[LastX + 1,lastY + 1]) &&
+                (chese[LastX, lastY] == chese[LastX + 2, lastY + 2]) &&
+                (chese[LastX, lastY] == chese[LastX + 3,lastY + 3]) &&
+                (chese[LastX + 4,lastY + 4] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX - 1,lastY - 1] + chese[LastX,lastY] + chese[LastX + 1,lastY + 1] + chese[LastX + 2,lastY + 2] + chese[LastX + 3,lastY + 3]) / type == 5)
+            if ((LastX + 3 <= 14) && 
+                (LastX - 1 >= 0) && 
+                (lastY + 3 <= 14) && 
+                (lastY - 1 >= 0) && 
+                (chese[LastX - 1,lastY - 1] == chese[LastX,lastY]) &&
+                (chese[LastX, lastY] == chese[LastX + 1, lastY + 1]) &&
+                (chese[LastX, lastY] == chese[LastX + 2,lastY + 2]) &&
+                (chese[LastX + 3,lastY + 3] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX - 2,lastY - 2] + chese[LastX - 1,lastY - 1] + chese[LastX,lastY] + chese[LastX + 1,lastY + 1] + chese[LastX + 2,lastY + 2]) / type == 5)
+            if ((LastX + 2 <= 14) && 
+                (LastX - 2 >= 0) && 
+                (lastY + 2 <= 14) && 
+                (lastY - 2 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX - 2, lastY - 2]) &&
+                (chese[LastX, lastY] == chese[LastX - 1,lastY - 1]) &&
+                (chese[LastX,lastY] == chese[LastX + 1,lastY + 1]) &&
+                (chese[LastX + 2,lastY + 2] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX - 3,lastY - 3] + chese[LastX - 2,lastY - 2] + chese[LastX - 1,lastY - 1] + chese[LastX,lastY] + chese[LastX + 1,lastY + 1]) / type == 5)
+            if ((LastX + 1 <= 14) && 
+                (LastX - 3 >= 0) && 
+                (lastY + 1 <= 14) && 
+                (lastY - 3 >= 0) &&
+                (chese[LastX, lastY] == chese[LastX - 3, lastY - 3]) &&
+                (chese[LastX, lastY] == chese[LastX - 2,lastY - 2]) &&
+                (chese[LastX - 1,lastY - 1] == chese[LastX,lastY]) &&
+                (chese[LastX + 1,lastY + 1] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX - 4,lastY - 4] + chese[LastX - 3,lastY - 3] + chese[LastX - 2,lastY - 2] + chese[LastX - 1,lastY - 1] + chese[LastX,lastY]) / type == 5)
+            if ((LastX - 4 >= 0) && 
+                (lastY - 4 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX - 4, lastY - 4]) &&
+                (chese[LastX, lastY] == chese[LastX - 3,lastY - 3]) &&
+                (chese[LastX - 2,lastY - 2] == chese[LastX, lastY]) &&
+                (chese[LastX,lastY] == chese[LastX - 1, lastY - 1]))
             {
                 return true;
             }
             //斜向右到左
-            if ((chese[LastX,lastY] + chese[LastX - 1,lastY + 1] + chese[LastX - 2,lastY + 2] + chese[LastX - 3,lastY + 3] + chese[LastX - 4,lastY + 4]) / type == 5)
+            if ((LastX - 4 >= 0) && 
+                (lastY + 4 <= 14) && 
+                (chese[LastX,lastY] == chese[LastX - 1,lastY + 1]) &&
+                (chese[LastX,lastY] == chese[LastX - 2, lastY + 2]) &&
+                (chese[LastX, lastY] == chese[LastX - 3,lastY + 3]) &&
+                (chese[LastX - 4,lastY + 4] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX + 1,lastY - 1] + chese[LastX,lastY] + chese[LastX - 1,lastY + 1] + chese[LastX - 2,lastY + 2] + chese[LastX - 3,lastY + 3]) / type == 5)
+            if ((LastX + 1 <= 14) && 
+                (LastX - 3 >= 0) && 
+                (lastY + 3 <= 14) && 
+                (lastY - 1 >= 0) &&
+                (chese[LastX + 1,lastY - 1] == chese[LastX,lastY]) &&
+                (chese[LastX, lastY] == chese[LastX - 1, lastY + 1]) &&
+                (chese[LastX, lastY] == chese[LastX - 2,lastY + 2]) &&
+                (chese[LastX - 3,lastY + 3] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX + 2,lastY - 2] + chese[LastX + 1,lastY - 1] + chese[LastX,lastY] + chese[LastX - 1,lastY + 1] + chese[LastX - 2,lastY + 2]) / type == 5)
+            if ((LastX + 2 <= 14) && 
+                (LastX - 2 >= 0) && 
+                (lastY + 2 <= 14) && 
+                (lastY - 2 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX + 2, lastY - 2]) &&
+                (chese[LastX, lastY] == chese[LastX + 1,lastY - 1]) &&
+                (chese[LastX,lastY] == chese[LastX - 1,lastY + 1]) &&
+                (chese[LastX - 2,lastY + 2] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX + 3,lastY - 3] + chese[LastX + 2,lastY - 2] + chese[LastX + 1,lastY - 1] + chese[LastX,lastY] + chese[LastX - 1,lastY + 1]) / type == 5)
+            if ((LastX + 3 <= 14) && 
+                (LastX - 1 >= 0) && 
+                (lastY + 1 <= 14) && 
+                (lastY - 3 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX + 3, lastY - 3]) &&
+                (chese[LastX, lastY] == chese[LastX + 2,lastY - 2]) &&
+                (chese[LastX + 1,lastY - 1] == chese[LastX,lastY]) &&
+                (chese[LastX - 1,lastY + 1] == chese[LastX, lastY]))
             {
                 return true;
             }
-            if ((chese[LastX + 4,lastY - 4] + chese[LastX + 3,lastY - 3] + chese[LastX + 2,lastY - 2] + chese[LastX + 1,lastY - 1] + chese[LastX,lastY]) / type == 5)
+            if ((LastX + 4 <= 14) && 
+                (lastY - 4 >= 0) && 
+                (chese[LastX, lastY] == chese[LastX + 4, lastY - 4]) &&
+                (chese[LastX, lastY] == chese[LastX + 3,lastY - 3]) &&
+                (chese[LastX + 2,lastY - 2] == chese[LastX, lastY]) &&
+                (chese[LastX,lastY] == chese[LastX + 1, lastY - 1]))
             {
                 return true;
             }

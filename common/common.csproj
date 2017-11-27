@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="common\BaseFleck.cs" />
     <Compile Include="common\BaseResp.cs" />
     <Compile Include="common\GameRules.cs" />
     <Compile Include="cs\User.cs" />

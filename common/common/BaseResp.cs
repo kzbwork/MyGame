@@ -1,8 +1,10 @@
 ﻿using common.cs;
+using Fleck;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO.Compression;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -196,6 +198,95 @@ namespace common.common
         {
             //使用异步操作时候，摒弃同步响应
             throw new InvalidOperationException();
+        }
+
+        public static bool IsCreateServer = false;
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public void BaseFleck()
+        {
+            if (!IsCreateServer)
+            {
+                IsCreateServer = true;
+                var allSockets = new List<IWebSocketConnection>();
+                FleckLog.Level = LogLevel.Debug;
+                var server = new WebSocketServer("ws://0.0.0.0:7181");
+                server.Start(socket =>
+                {
+                    socket.OnOpen = () =>
+                    {
+                        ResetChese();
+                        allSockets.Add(socket);
+                        if (allSockets.Count == 2)
+                        {
+                            allSockets.ToList().ForEach(s => {
+                                s.Send("game start");
+                                ResetChese();
+                            });
+                        }
+                    };
+                    socket.OnClose = () =>
+                    {
+                        allSockets.Remove(socket);
+                    };
+                    socket.OnMessage = message =>
+                    {
+                        try
+                        {
+                            var dct = fastJSON.JSON.ToObject<Dictionary<String, Object>>(message);
+                            if (dct["task"].Equals("down"))
+                            {
+                                int x = Convert.ToInt32(dct["x"]);
+                                int y = Convert.ToInt32(dct["y"]);
+                                int type = Convert.ToInt32(dct["type"]);
+                                mChsesBag[x, y] = type;
+                                //修改当前二维数组
+                                if (GameRules.CheckWuZi(mChsesBag, x, y, type))
+                                {
+                                    Dictionary<String, String> msg = new Dictionary<String, String>()
+                                    {
+                                        { "type",type.ToString()},
+                                        { "is_win", "true"},
+                                        { "x",x.ToString()},
+                                        { "y",y.ToString()}
+                                    };
+                                    String resp_msg = fastJSON.JSON.ToJSON(new Dictionary<string, object>()
+                                    {
+                                        { "status","ok"},
+                                        { "msg",msg},
+                                    });
+                                    allSockets.ToList().ForEach(s => {
+                                        s.Send(resp_msg);
+                                    });
+                                }
+                                else
+                                {
+                                    Dictionary<String, String> msg = new Dictionary<String, String>()
+                                    {
+                                        { "type",type.ToString()},
+                                        { "is_win", "false"},
+                                        { "x",x.ToString()},
+                                        { "y",y.ToString()}
+                                    };
+                                    String resp_msg = fastJSON.JSON.ToJSON(new Dictionary<string, object>()
+                                    {
+                                        { "status","false"},
+                                        { "msg",msg},
+                                    });
+                                    allSockets.ToList().ForEach(s => {
+                                        s.Send(resp_msg);
+                                    });
+                                }
+                            }
+                        }
+                        catch (Exception e){
+                            string sql = e.ToString();
+                        }
+                       
+                    };
+                });
+            }
         }
     }
 }
